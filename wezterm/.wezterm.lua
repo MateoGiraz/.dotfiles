@@ -1,5 +1,12 @@
 local wezterm = require("wezterm")
 
+local mux = wezterm.mux
+
+wezterm.on("gui-startup", function()
+  local tab, pane, window = mux.spawn_window{}
+  window:gui_window():toggle_fullscreen()
+end)
+
 local config = wezterm.config_builder()
 
 config.automatically_reload_config = true
@@ -35,4 +42,3 @@ config.background = {
 }
 
 return config
-
